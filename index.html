@@ -13,10 +13,54 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 </head>
+
+
+<head>
+<title>PLv-exp</title>
+<script type="text/javascript">
+<!--
+
+function dt_in(){
+  dt1 = document.exp.dt_11.value;
+  dt1 = parseInt(dt1);
+}
+
+function dt_out(){
+  document.exp.dt_13.value=dt3;
+}
+
+function plv_exp(){
+ dt_in();
+
+ if(dt1>=100){
+  dt3 = (150 - dt1)*(3000+20*( dt1 -100)+3980)/2;
+  dt_out();
+ }else if(dt1<50){
+  dt3 = (50 - dt1)*(30+20*(dt1-1)+990)/2+50*(1500+2480)/2+50*(3000+3980)/2;
+  dt_out();
+ }else if(50<=dt1<100){
+  dt3 = (100-dt1)*(1500+20*(dt1-50)+2480)/2+50*(3000+3980)/2;
+  dt_out();
+ }
+}
+
+//-->
+
+</script>
+</head>
 <body>
- <div>
-  <p>現在のPLv:<input type="text" ng-model="plv"></p>
-  <P>カンストまで{{(150-plv)*(3000+20*(plv-100)+3980)/2}}exp</p>
- </div>
+
+<form name="exp">
+
+現在のPLv.<input type=text name="dt_11" value="">
+
+<input type=button value="実行" onClick="plv_exp()">
+<table border=0 width=500>
+<td>
+カンストまでに必要な経験値は<input type=text name="dt_13" value=""> 
+</td>
+</table>
+</form>
+<!-- -->
 </body>
 </html>
